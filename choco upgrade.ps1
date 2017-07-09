@@ -61,3 +61,5 @@ foreach ($installedArray in $installedArray)
 }
 
 if ($stopped.Count -ne 0){echo "These programs were found to be running and were stopped: $stopped"}
+
+choco upgrade all -y

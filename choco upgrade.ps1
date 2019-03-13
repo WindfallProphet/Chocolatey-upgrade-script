@@ -24,7 +24,7 @@ $installed = $installed -replace '[^a-zA-Z-]',''
 $pinned = $pinned -replace '[^a-zA-Z-]',''
 
 #Excluded programs; No sense searching for these
-$excluded = @("KB","DotNet","font","vcredist")
+$excluded = @()
 
 #Creates an array containing exlcuded programs
 $excludedArray = New-Object System.Collections.ArrayList($null)
@@ -47,7 +47,7 @@ $stopped = @()
 #Goes through the installed programs and checks if any are running.
 foreach ($installedArray in $installedArray)
 {
-    if((Get-Process $installedArray -ErrorAction SilentlyContinue) -eq $null)
+    if((Get-Process -name $installedArray -ErrorAction SilentlyContinue) -eq $null)
     {
         #Write-Host "$installedArray not running"
     }
